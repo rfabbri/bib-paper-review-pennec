@@ -6,13 +6,34 @@
 \usepackage[portuges]{babel}
 % setspace - \doublespace \onehalfspace
 % fullpage - ??
-\usepackage{verbatim,url}
+\usepackage{verbatim}
+\usepackage{url}
+\usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage[bf]{subfigure}
 \usepackage[bf]{caption}
 \usepackage{amsmath,amssymb}
 \usepackage{algorithm,algorithmic}
 \usepackage{mathtools,empheq}
+\usepackage{macrosfabbri-basic}
+\usepackage{xcolor}
+
+% ------------------------------------------------------------------------------
+% Paper draft Comments and TODO's
+%
+% You have two versions of the macro
+% \draftnote{My note}. The first version puts notes (e.g. My note in the example)
+% into the margin of your document. The second formats the note as nothing. You
+% 'comment out' the version of the macro you don't want (using a % at the
+% beginning of the line).
+\newcommand{\draftnote}[1]{\marginpar{\tiny\raggedright\textsf{\hspace{0pt}#1}}}
+%\newcommand{\draftnote}[1]{}
+%
+% This one is just for the comments for in-line text.
+\newcommand{\indraftnote}[1]{\textcolor{blue}{\texttt{\footnotesize [#1]}}}
+\newcommand{\todo}[1]{\indraftnote{todo: #1}} % Este  "a fazer" é para eu não esquecer
+
+
 
 \begin{document}
 
@@ -49,7 +70,55 @@ This section has a summary of the notation used in the paper.
 
 \section{Commented and Expanded Abstract}
 
+Aqui devemos comentar o abstract. Neste caso, escolhemos por comentar
+cada parágrafo. Nesta seção, devemos procurar usar linguagem e observações mais
+gerais, como se fosse um resumo expandido.
+
+{
+\vspace{1em}
+\frame{\includegraphics[width=0.8\linewidth]{figs/pennec2018-abstract-paragraph1.png}}
+\vspace{1em}
+}
+
+Aqui o autor comenta que irá realizar uma extensão de PCA para Variedades
+Riemannianas.
+
+Variedades Riemannianas podem surgir, por exemplo, no contexto de \emph{data science}, de um conjunto de dados
+provenientes de fenômenos não-lineares, em que os dados possuem uma estrutura de
+similaridade ou métrica.
+
+\todo{O que seria um espaço geodésico que não é Riemanniano?}
+
+{
+\vspace{1em}
+\frame{\includegraphics[width=0.8\linewidth]{figs/pennec2018-abstract-paragraph2.png}}
+\vspace{1em}
+}
+
 \section{Commented and Expanded Section 1: Introduction}
+
+{
+\vspace{1em}
+\frame{\includegraphics[width=0.8\linewidth]{figs/pennec2018-abstract-paragraph2.png}}
+\vspace{1em}
+}
+
+Em poucas palavras, o PCA em espaços lineares (afim) pode ser definido
+como o menor sub-espaço afim ($\mathbb R^n$ transladado) que contém os dados;
+caso uma dimensão $n$ seja especificada, então o PCA de um conjunto é 
+o menor sub-espaço afim de dimensão $k$ que capture a máxima variância dos dados
+com $k$ dimensões. Se $k$ for maior que a dimensão do espaço que contém os dados
+sem erro, então o PCA pode ser calculado sem perda. Se $k$ for menor que esse
+valor, então o PCA vai conter perda. Conforme sabemos de Variedades
+Diferenciáveis, muitos conjuntos de dados amostrados de fenômenos não-lineares,
+por exemplo os provenientes de variedades diferenciáveis ou \emph{manifolds},
+não são descritíveis globalmente por um único sistema de coordenadas de dimensão
+míninima ou intrínseca. Logo, o PCA na maioria dos casos não-lineares incorre no
+problema de ineficiência, pois muitos fenômenos não-lineares de forma global
+com um único sistema de coordenadas cartesiano.
+ 
+
+\draftnote{refinar conceito de Karcher mean?}
 
 \section{Commented and Expanded Section 2: Riemannian geometry}
 
