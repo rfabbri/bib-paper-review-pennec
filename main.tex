@@ -1,7 +1,7 @@
-% PossÌveis TODO
+% Poss√≠veis TODO
 % - expandir nas equacoes xx yy
 \documentclass[a4paper,titlepage]{article}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[portuges]{babel}
 % setspace - \doublespace \onehalfspace
@@ -31,7 +31,7 @@
 %
 % This one is just for the comments for in-line text.
 \newcommand{\indraftnote}[1]{\textcolor{blue}{\texttt{\footnotesize [#1]}}}
-\newcommand{\todo}[1]{\indraftnote{todo: #1}} % Este  "a fazer" È para eu n„o esquecer
+\newcommand{\todo}[1]{\indraftnote{todo: #1}} % Este  "a fazer" √© para eu n√£o esquecer
 
 
 
@@ -42,36 +42,37 @@
 \section{Preliminares}
 
 Este trabalho consiste em expandir o artigo~\cite{Pennec:AnnStat:2018},
-cuja primeira p·gina est· reproduzida na Figura~\ref{fig:paper:page1}.
-O presente texto È uma vers„o comentada do artigo,
-expandindo o m·ximo possÌvel os conceitos ligados a Variedades Diferenci·veis.
-Desta forma, o presente texto È um super-conjunto do referido artigo.
-Ele contÈm todo o artigo, possivelmente em forma de recortes, com expansıes e
-coment·rios, e conexıes com outros conceitos.
+cuja primeira p√°gina est√° reproduzida na Figura~\ref{fig:paper:page1}.
+O presente texto √© uma vers√£o comentada do artigo,
+expandindo o m√°ximo poss√≠vel os conceitos ligados a Variedades Diferenci√°veis.
+Desta forma, o presente texto √© um super-conjunto do referido artigo.
+Ele cont√©m todo o artigo, possivelmente em forma de recortes, com expans√µes e
+coment√°rios, e conex√µes com outros conceitos.
 
 \begin{figure}
 \centering
 \frame{\includegraphics[width=0.8\linewidth]{figs/pennec2018-page1.png}}
 \caption{% 
-Primeira p·gina do artigo sendo revisado. Para baixar, foi necessario o Scihub
+Primeira p√°gina do artigo sendo revisado. Para baixar, foi necessario o Scihub
 pois o portal da CAPES nao continha este periodico apos 2017.
 }\label{fig:paper:page1}
 \end{figure}
 
-Ser· utilizada uma mistura de lÌnguas nesta revis„o, sendo o inglÍs preferido
-sempre que possÌvel. Sendo assim, n„o teremos o trabalho de traduzir do inglÍs
-algumas construÁıes b·sicas do \LaTeX\ como \emph{Theorem} ou
+Ser√° utilizada uma mistura de l√≠nguas nesta revis√£o, sendo o ingl√™s preferido
+sempre que poss√≠vel. Sendo assim, n√£o teremos o trabalho de traduzir do ingl√™s
+algumas constru√ß√µes b√°sicas do \LaTeX\ como \emph{Theorem} ou
 \emph{Definition}.
 
 
-\section{Tabela de NotaÁ„o}
+\section{Tabela de Nota√ß√£o}
 
-This section has a summary of the notation used in the paper.
+This section has a summary of the notation used in the paper, 
+mapped to the master notation.
 
 \section{Commented and Expanded Abstract}
 
 Aqui devemos comentar o abstract. Neste caso, escolhemos por comentar
-cada par·grafo. Nesta seÁ„o, devemos procurar usar linguagem e observaÁıes mais
+cada par√°grafo. Nesta se√ß√£o, devemos procurar usar linguagem e observa√ß√µes mais
 gerais, como se fosse um resumo expandido. Abaixo segue um screen shot do primeiro paragrafo.
 
 {
@@ -80,14 +81,14 @@ gerais, como se fosse um resumo expandido. Abaixo segue um screen shot do primei
 \vspace{1em}
 }
 
-Aqui o autor comenta que ir· realizar uma extens„o de PCA para Variedades
+Aqui o autor comenta que ir√° realizar uma extens√£o de PCA para Variedades
 Riemannianas.
 
 Variedades Riemannianas podem surgir, por exemplo, no contexto de \emph{data science}, de um conjunto de dados
-provenientes de fenÙmenos n„o-lineares, em que os dados possuem uma estrutura de
-similaridade ou mÈtrica.
+provenientes de fen√¥menos n√£o-lineares, em que os dados possuem uma estrutura de
+similaridade ou m√©trica.
 
-\todo{O que seria um espaÁo geodÈsico que n„o È Riemanniano?}
+\todo{O que seria um espa√ßo geod√©sico que n√£o √© Riemanniano?}
 
 {
 \vspace{1em}
@@ -103,21 +104,21 @@ similaridade ou mÈtrica.
 \vspace{1em}
 }
 
-Em poucas palavras, o PCA em espaÁos lineares (afim) pode ser definido
-como o menor sub-espaÁo afim ($\mathbb R^n$ transladado) que contÈm os dados;
-caso uma dimens„o $n$ seja especificada, ent„o o PCA de um conjunto È 
-o menor sub-espaÁo afim de dimens„o $k$ que capture a m·xima vari‚ncia dos dados
-com $k$ dimensıes. Se $k$ for maior que a dimens„o do espaÁo que contÈm os dados
-sem erro, ent„o o PCA pode ser calculado sem perda. Se $k$ for menor que esse
-valor, ent„o o PCA vai conter perda. Conforme sabemos de Variedades
-Diferenci·veis, muitos conjuntos de dados amostrados de fenÙmenos n„o-lineares,
-por exemplo os provenientes de variedades diferenci·veis ou \emph{manifolds},
-n„o s„o descritÌveis globalmente por um ˙nico sistema de coordenadas de dimens„o
-mÌninima ou intrÌnseca. Logo, o PCA na maioria dos casos n„o-lineares incorre no
-problema de ineficiÍncia, pois muitos fenÙmenos n„o-lineares de forma global
-com um ˙nico sistema de coordenadas cartesiano.
+Em poucas palavras, o PCA em espa√ßos lineares (afim) pode ser definido
+como o menor sub-espa√ßo afim ($\mathbb R^n$ transladado) que cont√©m os dados;
+caso uma dimens√£o $n$ seja especificada, ent√£o o PCA de um conjunto √© 
+o menor sub-espa√ßo afim de dimens√£o $k$ que capture a m√°xima vari√¢ncia dos dados
+com $k$ dimens√µes. Se $k$ for maior que a dimens√£o do espa√ßo que cont√©m os dados
+sem erro, ent√£o o PCA pode ser calculado sem perda. Se $k$ for menor que esse
+valor, ent√£o o PCA vai conter perda. Conforme sabemos de Variedades
+Diferenci√°veis, muitos conjuntos de dados amostrados de fen√¥menos n√£o-lineares,
+por exemplo os provenientes de variedades diferenci√°veis ou \emph{manifolds},
+n√£o s√£o descrit√≠veis globalmente por um √∫nico sistema de coordenadas de dimens√£o
+m√≠ninima ou intr√≠nseca. Logo, o PCA na maioria dos casos n√£o-lineares incorre no
+problema de inefici√™ncia, pois muitos fen√¥menos n√£o-lineares de forma global
+com um √∫nico sistema de coordenadas cartesiano.
 
-\emph{(Aqui vou escrever em ingles pra usar os jargıes)}
+\emph{(Aqui vou escrever em ingles pra usar os jarg√µes)}
 PCA being ``nested'' means that the PCA subspace of dimension $k$ contains the
 PCA subspace of dimension $k-1$. That is, the dimensions of the PCA are ordered,
 so that if PCA has dimension $n$ then the lower dimensional subspaces that are
@@ -131,7 +132,7 @@ dimension removed (the dimension along which the data has least variance).
 \frame{\includegraphics[width=0.8\linewidth]{figs/pennec2018-p1-paragraph2-intro.png}}
 \vspace{1em}
 }
-\draftnote{Revisar aqui o conceito de FrÈchet e tambÈm rapidamente o Karcher mean}
+\draftnote{Revisar aqui o conceito de Fr√©chet e tamb√©m rapidamente o Karcher mean}
 
 
 \section{Commented and Expanded Section 2: Riemannian geometry}
@@ -139,7 +140,7 @@ dimension removed (the dimension along which the data has least variance).
 \section{Commented and Expanded Section 3: Exponential Barycentric Subspaces
 (EBS) and affine spans}
 
-\section{Commented and Expanded Section 4: FrÈchet/Karcher barycentric
+\section{Commented and Expanded Section 4: Fr√©chet/Karcher barycentric
 subspaces}
 
 
