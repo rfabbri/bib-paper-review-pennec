@@ -3,9 +3,10 @@
 \documentclass[a4paper,titlepage]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[portuges]{babel}
+\usepackage[brazil]{babel}
 % setspace - \doublespace \onehalfspace
-% fullpage - ??
+% fullpage - ?? 
+
 \usepackage{verbatim}
 \usepackage{url}
 \usepackage{hyperref}
@@ -32,7 +33,7 @@
 % This one is just for the comments for in-line text.
 \newcommand{\indraftnote}[1]{\textcolor{blue}{\texttt{\footnotesize [#1]}}}
 \newcommand{\todo}[1]{\indraftnote{todo: #1}} % Este  "a fazer" é para eu não esquecer
-
+\newcommand{\juliana}[1]{\textcolor{red}{#1}}
 
 
 \begin{document}
@@ -118,13 +119,22 @@ míninima ou intrínseca. Logo, o PCA na maioria dos casos não-lineares incorre
 problema de ineficiência, pois muitos fenômenos não-lineares de forma global
 com um único sistema de coordenadas cartesiano.
 
-\emph{(Aqui vou escrever em ingles pra usar os jargões)}
+Note that it is possible to represent non-manifold areas of a nonlinear dataset
+using PCA, it just won't be the minimum linear space or tangent space, but might
+have to have larger dimensions. For instance, a 2D cross x might need a 2D space
+to be represented using extrinsic coordinates $\mathbb R^2$ (the plane
+containing the $x$). So PCA is useful for non-manifold data; it just might not
+be the most efficient one. But if one considers it can reduce from 10000
+dimensions (say the $x$ represented by a $100\times100$ image) to 2 is already a
+the biggest step in terms of compression.
+
 PCA being ``nested'' means that the PCA subspace of dimension $k$ contains the
 PCA subspace of dimension $k-1$. That is, the dimensions of the PCA are ordered,
 so that if PCA has dimension $n$ then the lower dimensional subspaces that are
 ``best fit'' for the data are simply the same PCA subspace, but with the lower
 dimension removed (the dimension along which the data has least variance). 
  
+ \juliana{iuhpojnjmpm}
 
 
 {
@@ -133,17 +143,31 @@ dimension removed (the dimension along which the data has least variance).
 \vspace{1em}
 }
 \draftnote{Revisar aqui a media de Fréchet e também rapidamente o Karcher mean}
-
-teste2
+\draftnote{Gabriel's comment}
+Neste trecho, o autor nos informa as condições as quais devemos ter para que tal generalização seja feita. Uma delas é que definamos um equivalente a subespaços afins em termos de variedades. Primeiramente o que é um espaço afim? Um espaço afim é definido informalmente como um espaço que não possui uma origem definida \draftnote{Notas do Gabriel: Por favor me expliquem melhor para que eu possa explicar corretamente}.
+Pode-se dizer também, segundo o autor, que para um espaço de dimensão zero, ou seja, um espaço discreto \draftnote{Gabriel's comment: link de onde tirei isso \url{https://encyclopediaofmath.org/wiki/Zero-dimensional_space}} uma abordagem com o uso da média de Fréchet no conjunto da minima da variança é naturalmente pensada quando aborda-se o problema em termos de variedades. A média de Fréchet é uma generalização aos centróides, onde é encontrado um ponto em um conjunto de pontos que possa melhor representar a tendência dos mesmos no grupo. 
+Em termos de variedades, supondo que tenhamos uma nuvem de pontos discreto dentro de um espaço de variedades, o uso da média de Fréchet nos ajudaria a encontrar a tendencia desta nuvem, proporcionando um melhor escolha de componentes pela PCA \draftnote{Gabriel's comment: Foi pelo menos o que eu a principio entendi deste trecho}
 
 \section{Commented and Expanded Section 2: Riemannian geometry}
 
+\emph{In statistics, directional data occupy a place of
+choice [Dryden (2005), Huckemann and Ziezold (2006)]. Hyperbolic spaces are
+also the simplest models of negatively curved spaces which model the space of
+isotropic Gaussian parameters with the Fisher–Rao metric in information geome-
+try [Costa, Santos and Strapasson (2015)]. As nonflat constant curvature spaces,
+both spherical and hyperbolic spaces are now considered in manifold learning for
+embedding data [Wilson et al. (2014)]. Thus, they are ideal examples to illustrate the theory throughout this paper.}
+Neste trecho, o autor nos revela neste parágrafo que em termos de simplicidade, ele escolhe duas abordagens que são as "dados direcionais" e os espaços hiperbólicos. Aschamados dados direcionais se referem a uma formulação mais recente da estatística conhecido como estatística direcional. Nessa formulação os dados são tratados com suas direções, eixos e rotações, mais tarde, com as figuras, veremos que ele utiliza od dados da PCA em uma distribuição circular.\draftnote{Gabriel's notes: checar se está correto e reescrever. Preciso entender melhor este processo. Uma reunião talvez...}. já espaços hiperbólicos são escolhidos por serem espaços homogêneos onde a curvatura do espaço é a curvatura do espaço seccionado. Uma comparação com o espaço euclidiano, enquanto o simples é utilizando um triângulo construído no espaço euclidiano e no espaço hiperbólico, no espaço euclidiano, a soma dos ângulos "S=180º" no hiperbólico "S<180º"
+
+\emph{Tools for computing on Riemannian manifolds. We consider a differential manifold M endowed with a smooth scalar product  $\langle | \rangle$ called the Riemannian metric on each tangent space $T_x M$ at point x of M. In a chart, the metric is specified by the dot product of the tangent vector to the coordinate curves: $gij (x) = \langle \partial i | \partial j \rangle_{x}$ . The Riemannian distance between two points is the infimum of the length of the curves joining these points. Geodesics, which are critical points of the energy functional, are parametrized by arc-length in addition to optimizing the length. We assume here that the manifold is geodesically complete, that is, the definition domain of all geodesics can be extended to $\mathbb{R}$. This means that the manifold has no boundary nor any singular point that we can reach in a finite time. As an important consequence, the Hopf–Rinow–De Rham theorem states that there always exists at least one minimizing geodesic between any two points of the manifold (i.e., whose length is the distance between the two points).}
+
+Neste trecho o autor começa a nos mostrar o ferramental usado para o artigo. Primeiramente ele deifine uma variedade $M$ com um produto escalar suave, conhecido como métrica Riemmaniana no espaço tangente $T_{x}M$ em um ponto $x$ de $M$ e em seguida ele constrói uma função $g(x)$ tal que $g_{ij}(x)=\langle \partial_i | \partial_j \rangle $. Isso significa que $g_{ij}(x)=||\partial_i||,i=j$, $g_{ij}(x)=\sum (\partial_i \partial_j)^2,i\neq j$, o que representa a derivada direcional \draftnote{Gabriel: Verificar se isso faz sentido}. Ele então, a partir dessa disso, constrói uma geodésica parametrizando pelos ótimos de $g$ e, como ele assume que esta variedade é geodesicamente completa, ele consegue atribuir uma correlção da variedade ao espaço $\mathbb{R}$ chegando a condlusão que a variedade não possui nem ponto de singularidade nem contorno que possa-se chegar em um tempo fnito e, por fim, que o Teorema de Hopf-Rinow-De Rham é satisfeito \draftnote{Gabriel: Escrever melhor essa parte}
+
+\emph{Moments of point distributions. Let $\{x_0,...,x_k\}$ be a set of $k + 1$ points on a Manifold provided with weights $(\lambda_0,...,\lambda_k)$ that do not sum to zero. We may see these weighted points as the weighted sum of Diracs $\mu (x)=i \lambda i\delta xi(x)$. As this distribution is not normalized and weights can be negative, it is generally not a probability. It is also singular with respect to the Riemannian measure. Thus,we have to take care in defining its moments as the Riemannian log and distance functions are not smooth at the cut-locus.}
 \section{Commented and Expanded Section 3: Exponential Barycentric Subspaces
 (EBS) and affine spans}
 
-\section{Commented and Expanded Section 4: Fréchet/Karcher barycentric
-subspaces}
-
+\section{Commented and Expanded Section 4: Fréchet/Karcher barycentric subspaces}
 
 {
 \vspace{1em}
@@ -161,8 +185,9 @@ subspaces}
 \section{Commented and Expanded Section 7: Discussion}
 
 \section{Commented and Expanded Appendix: Proof of Theorem 8}
+Nesta seção o autor nos provém primeiramente com uma função que pega e leva de $x  a y \notin C(x)$ em respeito ao tempo e ele também nos informa que revertendo o tempo ao longo da geodésica, tem-se $\gamma_{(x,\overrightarrow{xy})}(t)=\gamma_{(y,\overrightarrow{yx})}(1-t)$, e ele também diz que em  $\dot{\gamma_{(x,\overrightarrow{xy})}}(1)=\dot{\gamma_{(y,\overrightarrow{yx})}}(0)=-\overrightarrow{yx}$. Isto que o autor faz em um espaço geodésico é similar a uma abordagem em uma parametrização em um espaço euclidiano $x(t)=x_{0}t+(1-t)x_{1}$ e pelo que pode-se entender $\overrightarrow{xy}$ é o vetor distância de $x$ a $y$, portanto faz sentido que $\overrightarrow{xy}=-\overrightarrow{yx}$. Então ele define que $\gamma_{(x,\overrightarrow{xy})}(t)=exp_{x}(t \overrightarrow{xy})$, temos $\overrightarrow{yx}=-D exp_{x}|_{\overrightarrow{xy}}\overrightarrow{xy}$\draftnote{Gabriel's note: Por favor expandir isso!}. Pelo fim do parágrafo é definido que $(D exp_{x}|_{\overrightarrow{xy}}\overrightarrow{xy})D log_{x}|_{y} = Id$ pelo fato de $exp_{x}(log_{x}(y))=y$ e finalmente ele considera que se tanto $Dexp_{x}$ quanto $Dlog_{x}$ possuírem o posto aquivalente ao expaço quociente da variedade com o domínio em x, podemos criar uma função inversa como descrito na equação (16). No segundo parágrafo, tendo as funções definidas ele considera uma bola aberta geodésica $B(x_0,\xsi)$ e se for construído um domínio $D_{\xsi}=M \\ C(B(x_0,\xsi)$ em q $log_{x}(y)$ seja suave e bem definida na bola e para todo y em D, a simetria é preservada, portanto (16) pode ser reescrito como (17) 
 
-\section{Commented and Expanded Supplementary Material}
+%\section{Commented and Expanded Supplementary Material}
 
 Teste
 
