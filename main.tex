@@ -211,11 +211,24 @@ Nesta seção
 
 \section{Commented and Expanded Section 3: Exponential Barycentric Subspaces
 (EBS) and affine spans}
-
+{
 \vspace{1em}
-\frame{\includegraphics[width=1\linewidth]{figs/pennec2018-def4.PNG}}
+\frame{\includegraphics[width=1\linewidth]{figs/pennec2018-sec3-1.PNG}}
 \vspace{1em}
+}
 
+\juliana{No primeiro parágrafo o autor define de duas formas diferentes, mas equivalentes, subespaços afins em espaços euclidianos e destaca que a equivalência não verifica para variedades.}
+
+\\
+\juliana{Podemos dizer que os coeficientes $\lambda_i's$ da definição de Aff$(x_0 ,..., x_k)$ (que chamaremos de $\alpha_i$) estão normalizados, enquanto os $\lambda_i's$ da coordenada baricêntrica não necessariamente. O vetor $\lambda$ é múltiplo escalar do vetor $\alpha$.} 
+
+\juliana{O $k$-simplex dos pontos $x_0, ..., x_k$ afins independentes (dimensão de Aff$(x_0 ,..., x_k)$ é $k-1$) é o conjunto de todas as combinações afins $\sum_{i=0}^k \lambda_i x_i, com \sum_{i=0}^k \lambda_i=1$, tais que $\lambda_i \geq 0$ (fecho convexo).}
+
+{
+\vspace{1em}
+\frame{\includegraphics[width=.9\linewidth]{figs/pennec2018-def4.PNG}}
+\vspace{1em}
+}
 
 \section{Commented and Expanded Section 4: Fréchet/Karcher barycentric subspaces}
 
@@ -224,6 +237,7 @@ Nesta seção
 \frame{\includegraphics[width=0.8\linewidth]{figs/pennec2018-p18-fig2.png}}
 \vspace{1em}
 }
+
 
 \todo{explicar cada figura do paper com proprias palavras e de forma expandida}
 
@@ -235,7 +249,8 @@ subspaces}
 \section{Commented and Expanded Section 7: Discussion}
 
 \section{Commented and Expanded Appendix: Proof of Theorem 8}
-Nesta seção o autor nos provém primeiramente com uma função que pega e leva de $x  a y \notin C(x)$ em respeito ao tempo e ele também nos informa que revertendo o tempo ao longo da geodésica, tem-se $\gamma_{(x,\overrightarrow{xy})}(t)=\gamma_{(y,\overrightarrow{yx})}(1-t)$, e ele também diz que em  $\dot{\gamma_{(x,\overrightarrow{xy})}}(1)=\dot{\gamma_{(y,\overrightarrow{yx})}}(0)=-\overrightarrow{yx}$. Isto que o autor faz em um espaço geodésico é similar a uma abordagem em uma parametrização em um espaço euclidiano $x(t)=x_{0}t+(1-t)x_{1}$ e pelo que pode-se entender $\overrightarrow{xy}$ é o vetor distância de $x$ a $y$, portanto faz sentido que $\overrightarrow{xy}=-\overrightarrow{yx}$. Então ele define que $\gamma_{(x,\overrightarrow{xy})}(t)=exp_{x}(t \overrightarrow{xy})$, temos $\overrightarrow{yx}=-D exp_{x}|_{\overrightarrow{xy}}\overrightarrow{xy}$\draftnote{Gabriel's note: Por favor expandir isso!}. Pelo fim do parágrafo é definido que $(D exp_{x}|_{\overrightarrow{xy}}\overrightarrow{xy})D log_{x}|_{y} = Id$ pelo fato de $exp_{x}(log_{x}(y))=y$ e finalmente ele considera que se tanto $Dexp_{x}$ quanto $Dlog_{x}$ possuírem o posto aquivalente ao expaço quociente da variedade com o domínio em x, podemos criar uma função inversa como descrito na equação (16). No segundo parágrafo, tendo as funções definidas ele considera uma bola aberta geodésica $B(x_0,\xsi)$ e se for construído um domínio $D_{\xsi}=M \\ C(B(x_0,\xsi)$ em q $log_{x}(y)$ seja suave e bem definida na bola e para todo y em D, a simetria é preservada, portanto (16) pode ser reescrito como (17) 
+
+Nesta seção o autor nos provém primeiramente com uma função que pega e leva de $x  a y \notin C(x)$ em respeito ao tempo e ele também nos informa que revertendo o tempo ao longo da geodésica, tem-se $\gamma_{(x,\overrightarrow{xy})}(t)=\gamma_{(y,\overrightarrow{yx})}(1-t)$, e ele também diz que em  $\dot{\gamma_{(x,\overrightarrow{xy})}}(1)=\dot{\gamma_{(y,\overrightarrow{yx})}}(0)=-\overrightarrow{yx}$. Isto que o autor faz em um espaço geodésico é similar a uma abordagem em uma parametrização em um espaço euclidiano $x(t)=x_{0}t+(1-t)x_{1}$ e pelo que pode-se entender $\overrightarrow{xy}$ é o vetor distância de $x$ a $y$, portanto faz sentido que $\overrightarrow{xy}=-\overrightarrow{yx}$. Então ele define que $\gamma_{(x,\overrightarrow{xy})}(t)=exp_{x}(t \overrightarrow{xy})$, temos $\overrightarrow{yx}=-D exp_{x}|_{\overrightarrow{xy}}\overrightarrow{xy}$\draftnote{Gabriel's note: Por favor expandir isso!}. Pelo fim do parágrafo é definido que $(D exp_{x}|_{\overrightarrow{xy}}\overrightarrow{xy})D log_{x}|_{y} = Id$ pelo fato de $exp_{x}(log_{x}(y))=y$ e finalmente ele considera que se tanto $Dexp_{x}$ quanto $Dlog_{x}$ possuírem o posto aquivalente ao expaço quociente da variedade com o domínio em x, podemos criar uma função inversa como descrito na equação (16). No segundo parágrafo, tendo as funções definidas ele considera uma bola aberta geodésica $B(x_0,\xsi)$ e se for construído um domínio $D_{\xsi}=M \setminus C(B(x_0,\xsi)$ em q $log_{x}(y)$ seja suave e bem definida na bola e para todo y em D, a simetria é preservada, portanto (16) pode ser reescrito como (17) 
 
 %\section{Commented and Expanded Supplementary Material}
 
