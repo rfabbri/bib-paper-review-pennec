@@ -176,130 +176,46 @@ embedding data [Wilson et al. (2014)]. Thus, they are ideal examples to illustra
 
 Neste trecho, o autor nos revela neste parágrafo que em termos de simplicidade, ele escolhe duas abordagens que são as "dados direcionais'' e os espaços hiperbólicos. Os chamados dados direcionais se referem a uma formulação mais recente da estatística conhecido como estatística direcional. Nessa formulação os dados são tratados com suas direções, eixos e rotações. Mais tarde, com as figuras, veremos que ele utiliza os dados da PCA em uma distribuição circular.\draftnote{Gabriel's notes: checar se está correto e reescrever. Preciso entender melhor este processo. Uma reunião talvez...} 
 \\
-\juliana{Os espaços esférico e hiperbólico são exemplos de espaços pseudo-euclidianos, isto é, espaços cujas dimensões são caracterizadas por autovalores negativos e a distância quadrada entre objetos tem componentes positivos e negativos que são somados para fornecer a distância total. Espaços pseudo-euclidianos não são métricos, o que dificulta o cálculo correto propriedades geométricas. Uma alternativa é mergulhar os dados em uma variedade curva, que é um espaço métrico, mas não euclidiano (WILSON, \textit{et all}, 2014).}
+\juliana{Os espaços esférico e hiperbólico são exemplos de espaços pseudo-euclidianos, isto é, espaços cujas dimensões são caracterizadas por autovalores negativos e a distância quadrada entre objetos tem componentes positivos e negativos que são somados para fornecer a distância total. Espaços pseudo-euclidianos não são métricos, o que dificulta calcular corretamente propriedades geométricas. Uma alternativa é imergir os dados em uma variedade curva, que é um espaço métrico, mas não euclidiano (WILSON, \textit{et all}, 2014).}
 
-Os espaços hiperbólicos são escolhidos por serem espaços homogêneos onde a curvatura do espaço é a curvatura do espaço seccionado; \juliana{é constante e negativa. Já a curvatura dos espaços esféricos é constante e positiva}. \sout{Uma comparação com o espaço euclidiano, enquanto o simples é utilizando um triângulo construído no espaço euclidiano e no espaço hiperbólico, no espaço euclidiano, a soma dos ângulos "S=180º" no hiperbólico "S<180º''.} \draftnote{Juliana's comment: a parte riscada achei desnecessária. O que acha?}
+Os espaços hiperbólicos são escolhidos por serem espaços homogêneos onde a curvatura do espaço é a curvatura do espaço seccionado; \juliana{ela é constante e negativa. Já a curvatura dos espaços esféricos é constante e positiva}. \sout{Uma comparação com o espaço euclidiano, enquanto o simples é utilizando um triângulo construído no espaço euclidiano e no espaço hiperbólico, no espaço euclidiano, a soma dos ângulos "S=180º" no hiperbólico "S<180º''.} \draftnote{Juliana's comment: a parte riscada achei desnecessária. O que acha?}
 
 \begin{center}
 \fbox{\parbox[c]{11cm}{\textit{Tools for computing on Riemannian manifolds.} We consider a differential manifold M endowed with a smooth scalar product  $\langle | \rangle$ called the Riemannian metric on each tangent space $T_x M$ at point x of M. In a chart, the metric is specified by the dot product of the tangent vector to the coordinate curves: $gij (x) = \langle \partial i | \partial j \rangle_{x}$ . The Riemannian distance between two points is the infimum of the length of the curves joining these points. Geodesics, which are critical points of the energy functional, are parametrized by arc-length in addition to optimizing the length. We assume here that the manifold is geodesically complete, that is, the definition domain of all geodesics can be extended to $\mathbb{R}$. This means that the manifold has no boundary nor any singular point that we can reach in a finite time. As an important consequence, the Hopf–Rinow–De Rham theorem states that there always exists at least one minimizing geodesic between any two points of the manifold (i.e., whose length is the distance between the two points).}}
 \end{center}
 
-Neste trecho o autor começa a nos mostrar o ferramental usado para o artigo. Primeiramente ele deifine uma variedade $M$ com um produto escalar suave, conhecido como métrica Riemmaniana no espaço tangente $T_{x}M$ em um ponto $x$ de $M$ e em seguida ele constrói uma função $g(x)$ tal que $g_{ij}(x)=\langle \partial_i | \partial_j \rangle $. Isso significa que $g_{ij}(x)=||\partial_i||,i=j$, $g_{ij}(x)=\sum (\partial_i \partial_j)^2,i\neq j$, o que representa a derivada direcional \draftnote{Gabriel: Verificar se isso faz sentido}. Ele então, a partir dessa disso, constrói uma geodésica parametrizando pelos ótimos de $g$ e, como ele assume que esta variedade é geodesicamente completa, ele consegue atribuir uma correlção da variedade ao espaço $\mathbb{R}$ chegando a condlusão que a variedade não possui nem ponto de singularidade nem contorno que possa-se chegar em um tempo fnito e, por fim, que o Teorema de Hopf-Rinow-De Rham é satisfeito \draftnote{Gabriel: Escrever melhor essa parte}
+Neste trecho o autor começa a nos mostrar o ferramental usado para o artigo. Primeiramente ele deifine uma variedade $M$ com um produto escalar suave, conhecido como métrica Riemmaniana no espaço tangente $T_{x}M$ em um ponto $x$ de $M$ e em seguida ele constrói uma função $g(x)$ tal que $g_{ij}(x)=\langle \partial_i | \partial_j \rangle $. Isso significa que $g_{ij}(x)=||\partial_i||,i=j$, $g_{ij}(x)=\sum (\partial_i \partial_j)^2,i\neq j$, o que representa a derivada direcional \draftnote{Gabriel: Verificar se isso faz sentido}. Ele então, a partir dessa disso, constrói uma geodésica parametrizando pelos ótimos de $g$ e, como ele assume que esta variedade é geodesicamente completa, ele consegue atribuir uma correlção da variedade ao espaço $\mathbb{R}$ chegando a condlusão que a variedade não possui nem ponto de singularidade nem contorno que possa-se chegar em um tempo fnito e, por fim, que o Teorema de Hopf-Rinow-De Rham é satisfeito. \draftnote{Gabriel: Escrever melhor essa parte}
 
-\emph{DEFINITION 1 [(k +1)-pointed/punctured Riemannian manifold]. Let {x0,...
-xk} ∈ Mk+1 be a set of k + 1 reference points in the n-dimensional Riemannian
-manifold M and C(x0,...,xk) = k
+\begin{center}
+\fbox{\parbox[c]{11cm}{DEFINITION 1 ((k+1)-pointed/punctured Riemannian manifold). 
+\\
+\textit{Let ${x_0,...,x_k} \in \mathcal{M}^{k+1}$ be a set of $k + 1$ reference points in the n-dimensional Riemannian manifold $\mathcal{M}$ and $C(x_0,...,x_k) = \bigcup_{i=0}^{k} C(x_i)$ be the union of the cut loci of these points. We call the object consisting of the smooth manifold $\mathcal{M}$ and the $k + 1$ reference points a $(k + 1)$-pointed manifold. Likewise, we call the submanifold $\mathcal{M}^{*}(x_0,...,x_k) = \mathcal{M} \ C(x_0,...,x_k)$ of the non-cut points of the $k + 1$ reference points a $(k + 1)$-punctured manifold.}}}
+\end{center}
 
-i=0 C(xi) be the union of the cut loci of these
-points. We call the object consisting of the smooth manifold M and the k + 1
-reference points a (k + 1)-pointed manifold. Likewise, we call the submanifold
-M∗(x0,...,xk) = M \ C(x0,...,xk) of the noncut points of the k + 1 reference
-points a (k + 1)-punctured manifold.
+\begin{center}
+\fbox{\parbox[c]{11cm}{On $\mathcal{M}{*}(x_0,...,x_k)$, the distance to the points ${x0,...,xk}$ is smooth. The Riemannian log function $\vec{x x_i} = \log_x(x_i)$ is also well defined for all the points of $\mathcal{M}{*}(x_0,...,x_k)$. Since the cut locus of each point is closed and has null measure, the punctured manifold $\mathcal{M}{*}(x_0,...,x_k)$ is open and dense in $\mathcal{M}$, which means that it is a submanifold of $\mathcal{M}$. However, this submanifold is not necessarily connected.
+For instance in the flat torus $(S_1)^n$, the cut-locus of $k + 1 \leq n$ points divides the torus into kn disconnected cells.}}
+\end{center}
 
-On M∗(x0,...,xk), the distance to the points {x0,...,xk} is smooth. The Rie-
-mannian log function −xx
-
-→
-i = logx(xi) is also well defined for all the points of
-M∗(x0,...,xk). Since the cut locus of each point is closed and has null measure,
-the punctured manifold M∗(x0,...,xk) is open and dense in M, which means that
-it is a submanifold of M. However, this submanifold is not necessarily connected.
-For instance in the flat torus (S1)n, the cut-locus of $k + 1 \leq n$ points divides the torus into kn disconnected cells.}
 Nesta seção
 
-\emph{DEFINITION 2 [Weighted moments of a (k + 1)-pointed manifold]. Let
-$(\lambda_0,...,\lambda_k) \in \mathbb{R}^{k+1}$ such that 
-$i \lambda_i= 0$. We call λi = λi/(k
+\vspace{1em}
+\frame{\includegraphics[width=0.95\linewidth]{figs/pennec2018-def2.PNG}}
+\vspace{1em}
 
-j=0 λj ) the normal-
-ized weights. The weighted pth-order moment of a (k + 1)-pointed Riemannian
-
-manifold is the p-contravariant tensor
-(2) Mp(x,λ) =
-i
-λi
-−xx
-→
-i ⊗ −xx
-→
-i ⊗···⊗ −xx
-→
-i
-p times
-.
-
-BARYCENTRIC SUBSPACE ANALYSIS ON MANIFOLDS 2717
-The normalized pth-order moment is Mp(x,λ) = Mp(x,λ) = Mp(x,λ)/M0(λ).
-Both tensors are smoothly defined on the punctured manifold M∗(x0,...,xk).
-The 0th-order moment M0(λ) = 
-
-i λi = 1Tλ is the mass. The pth-order mo-
-ment is homogeneous of degree 1 in λ while the normalized pth-order moment is
-
-naturally invariant by a change of scale of the weights. For a fixed weight λ, the
-first-order moment M1(x,λ) = 
-i λi
-−→
-xxi is a smooth vector field on the manifold
-M∗(x0,...,xk) whose zeros will be the subject of our interest. The second and
-
-higher-order moments are smooth (p, 0) tensor fields that will be used in contrac-
-tion with the Riemannian curvature tensor.
-
-Affinely independent points on a manifold. In a Euclidean space, k + 1 points
-
-are affinely independent if their affine combination generates a k dimensional sub-
-space, or equivalently if none of the point belong to the affine span of the k others.
-
-They define in that case a k-simplex. Extending these different definitions to mani-
-folds lead to different notions. We chose a definition which rules out the singulari-
-ties of constant curvature spaces and which guaranties the existence of barycentric
-
-subspaces around reference point. In the sequel, we assume by default that the
-k + 1 reference points of pointed manifolds are affinely independent (thus k ≤ n).
-Except for a few examples, the study of singular configurations is left for a future
-work.}
-\emph{DEFINITION 3 (Affinely independent points). A set of k + 1 points {x0,...,
-xk} is affinely independent if no point is in the cut-locus of another and if all the
-sets of k vectors {logxi
-(xj )}0≤j
-=i≤k ∈ TxiMk are linearly independent.}
+\begin{center}
+ \fbox{\parbox[c]{11cm}{DEFINITION 3 (Affinely independent points). A set of $k + 1$ points ${x_0,...,x_k}$ is affinely independent if no point is in the cut-locus of another and if all the sets of $k$ vectors ${\log_{x_i}
+(xj)}_{0\leq j\neq i \leq k} \in T_{x_i}\mathcal{M}^k$ are linearly independent.}}
+\end{center}
 
 
 \section{Commented and Expanded Section 3: Exponential Barycentric Subspaces
 (EBS) and affine spans}
 
-\emph{DEFINITION 4 [Projective space of barycentric coordinates (weights)]. Bary-
-centric coordinates of k + 1 points live in the real projective space RPn = (Rk+1 \
+\vspace{1em}
+\frame{\includegraphics[width=1\linewidth]{figs/pennec2018-def4.PNG}}
+\vspace{1em}
 
-{0})/R∗ from which we remove the codimension 1 subspace 1⊥ orthogonal to the
-point 1 = (1 : 1 :··· 1):
-P∗
-k = 
-λ = (λ0 : λ1 :···: λk) ∈ RPn s.t. 1λ
-= 0
-
-.
-
-Projective points are represented by lines through 0 in Figure 1. Standard rep-
-resentations are given by the intersection of the lines with the “upper” unit sphere
-
-Sk of Rk+1 with north pole 1/
-
-√k + 1 or by the affine k-plane of Rk+1 passing
-through the point 1/(k + 1) and orthogonal to this vector. This last representation
-give the normalized weight λi = λi/(k
-
-j=0 λj ): the vertices of the simplex have
-homogeneous coordinates (1 : 0 :···: 0)···(0 : 0 :···: 1). To prevent weights to
-sum up to zero, we have to remove the codimension 1 subspace 1⊥ orthogonal
-to the projective point 1 = (1 : 1 :···: 1) (blue line in Figure 1). This excluded
-subspace corresponds to the equator of the pole 1/
-
-√k + 1 for the sphere represen-
-tation (points C and −C identified in Figure 1), and to the projective completion
-
-(points at infinity) of the affine k-plane of normalized weights.}
 
 \section{Commented and Expanded Section 4: Fréchet/Karcher barycentric subspaces}
 
