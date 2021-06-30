@@ -18,6 +18,7 @@
 \usepackage{mathtools,empheq}
 \usepackage{macrosfabbri-basic}
 \usepackage{xcolor}
+\usepackage{ulem}
 
 % ------------------------------------------------------------------------------
 % Paper draft Comments and TODO's
@@ -152,25 +153,153 @@ Neste trecho, o autor nos informa as condições as quais devemos ter para que t
 
 Pode-se dizer também, segundo o autor, que para um espaço de dimensão zero, ou seja, um espaço discreto \draftnote{Gabriel's comment: link de onde tirei isso \url{https://encyclopediaofmath.org/wiki/Zero-dimensional_space}} uma abordagem com o uso da média de Fréchet no conjunto da minima da variança é naturalmente pensada quando aborda-se o problema em termos de variedades. A média de Fréchet é uma generalização aos centróides, onde é encontrado um ponto em um conjunto de pontos que possa melhor representar a tendência dos mesmos no grupo. 
 Em termos de variedades, supondo que tenhamos uma nuvem de pontos discretos dentro de um espaço de variedades, o uso da média de Fréchet nos ajudaria a encontrar a tendencia desta nuvem, proporcionando uma melhor escolha de componentes pela PCA. \draftnote{Gabriel's comment: Foi pelo menos o que eu a principio entendi deste trecho}
+\\
+\juliana{A média de Fréchet é uma generalização da média aritmética em espaços métricos abstratos e, em geral, não é única (Ginestet, Simmons, Kolaczyk, 2012).}
+\\
+\juliana{Um ponto $\mu$ em um espaço métrico \textbf{M} com função distância $\rho$ é chamado de média de Fréchet da variável aleatória $X$ em \textbf{M} se satisfaz
+$$\mu=arg \min \limits_{x \in M} E[\rho(x,X)^2].$$
+Se \textbf{M} é uma variedade riemanniana, ela é localmente homeomorfa a um espaço euclidiano e as distribuições limites para as médias de Fréchet das amostras são, em geral, gaussianas; fenômeno semelhante ao das médias euclidianas (LE, H. 2015). A curvatura seccional de uma superfície é uma generalização da curvatura gaussiana; assim, se a curvatura gaussiana é negativa, então a curvatura seccional também é. Portanto, em uma variedade Riemanniana completa, simplesmente conexa e de curvatura seccional não-positiva a média de Fréchet é única (POLANÍA, 2014).}
+\draftnote{Juliana's comment:Explicar melhor}
+
 
 \section{Commented and Expanded Section 2: Riemannian geometry}
 
-\emph{In statistics, directional data occupy a place of
+\begin{center}
+\fbox{\parbox[c]{11cm}{In statistics, directional data occupy a place of
 choice [Dryden (2005), Huckemann and Ziezold (2006)]. Hyperbolic spaces are
 also the simplest models of negatively curved spaces which model the space of
 isotropic Gaussian parameters with the Fisher–Rao metric in information geome-
 try [Costa, Santos and Strapasson (2015)]. As nonflat constant curvature spaces,
 both spherical and hyperbolic spaces are now considered in manifold learning for
-embedding data [Wilson et al. (2014)]. Thus, they are ideal examples to illustrate the theory throughout this paper.}
-Neste trecho, o autor nos revela neste parágrafo que em termos de simplicidade, ele escolhe duas abordagens que são as "dados direcionais" e os espaços hiperbólicos. As chamados dados direcionais se referem a uma formulação mais recente da estatística conhecido como estatística direcional. Nessa formulação os dados são tratados com suas direções, eixos e rotações, mais tarde, com as figuras, veremos que ele utiliza od dados da PCA em uma distribuição circular.\draftnote{Gabriel's notes: checar se está correto e reescrever. Preciso entender melhor este processo. Uma reunião talvez...}. já espaços hiperbólicos são escolhidos por serem espaços homogêneos onde a curvatura do espaço é a curvatura do espaço seccionado. Uma comparação com o espaço euclidiano, enquanto o simples é utilizando um triângulo construído no espaço euclidiano e no espaço hiperbólico, no espaço euclidiano, a soma dos ângulos "S=180º" no hiperbólico "S<180º"
+embedding data [Wilson et al. (2014)]. Thus, they are ideal examples to illustrate the theory throughout this paper.}}
+\end{center}
 
-\emph{Tools for computing on Riemannian manifolds. We consider a differential manifold M endowed with a smooth scalar product  $\langle | \rangle$ called the Riemannian metric on each tangent space $T_x M$ at point x of M. In a chart, the metric is specified by the dot product of the tangent vector to the coordinate curves: $gij (x) = \langle \partial i | \partial j \rangle_{x}$ . The Riemannian distance between two points is the infimum of the length of the curves joining these points. Geodesics, which are critical points of the energy functional, are parametrized by arc-length in addition to optimizing the length. We assume here that the manifold is geodesically complete, that is, the definition domain of all geodesics can be extended to $\mathbb{R}$. This means that the manifold has no boundary nor any singular point that we can reach in a finite time. As an important consequence, the Hopf–Rinow–De Rham theorem states that there always exists at least one minimizing geodesic between any two points of the manifold (i.e., whose length is the distance between the two points).}
+Neste trecho, o autor nos revela neste parágrafo que em termos de simplicidade, ele escolhe duas abordagens que são as "dados direcionais'' e os espaços hiperbólicos. Os chamados dados direcionais se referem a uma formulação mais recente da estatística conhecido como estatística direcional. Nessa formulação os dados são tratados com suas direções, eixos e rotações. Mais tarde, com as figuras, veremos que ele utiliza os dados da PCA em uma distribuição circular.\draftnote{Gabriel's notes: checar se está correto e reescrever. Preciso entender melhor este processo. Uma reunião talvez...} 
+\\
+\juliana{Os espaços esférico e hiperbólico são exemplos de espaços pseudo-euclidianos, isto é, espaços cujas dimensões são caracterizadas por autovalores negativos e a distância quadrada entre objetos tem componentes positivos e negativos que são somados para fornecer a distância total. Espaços pseudo-euclidianos não são métricos, o que dificulta o cálculo correto propriedades geométricas. Uma alternativa é mergulhar os dados em uma variedade curva, que é um espaço métrico, mas não euclidiano (WILSON, \textit{et all}, 2014).}
+
+Os espaços hiperbólicos são escolhidos por serem espaços homogêneos onde a curvatura do espaço é a curvatura do espaço seccionado; \juliana{é constante e negativa. Já a curvatura dos espaços esféricos é constante e positiva}. \sout{Uma comparação com o espaço euclidiano, enquanto o simples é utilizando um triângulo construído no espaço euclidiano e no espaço hiperbólico, no espaço euclidiano, a soma dos ângulos "S=180º" no hiperbólico "S<180º''.} \draftnote{Juliana's comment: a parte riscada achei desnecessária. O que acha?}
+
+\begin{center}
+\fbox{\parbox[c]{11cm}{\textit{Tools for computing on Riemannian manifolds.} We consider a differential manifold M endowed with a smooth scalar product  $\langle | \rangle$ called the Riemannian metric on each tangent space $T_x M$ at point x of M. In a chart, the metric is specified by the dot product of the tangent vector to the coordinate curves: $gij (x) = \langle \partial i | \partial j \rangle_{x}$ . The Riemannian distance between two points is the infimum of the length of the curves joining these points. Geodesics, which are critical points of the energy functional, are parametrized by arc-length in addition to optimizing the length. We assume here that the manifold is geodesically complete, that is, the definition domain of all geodesics can be extended to $\mathbb{R}$. This means that the manifold has no boundary nor any singular point that we can reach in a finite time. As an important consequence, the Hopf–Rinow–De Rham theorem states that there always exists at least one minimizing geodesic between any two points of the manifold (i.e., whose length is the distance between the two points).}}
+\end{center}
 
 Neste trecho o autor começa a nos mostrar o ferramental usado para o artigo. Primeiramente ele deifine uma variedade $M$ com um produto escalar suave, conhecido como métrica Riemmaniana no espaço tangente $T_{x}M$ em um ponto $x$ de $M$ e em seguida ele constrói uma função $g(x)$ tal que $g_{ij}(x)=\langle \partial_i | \partial_j \rangle $. Isso significa que $g_{ij}(x)=||\partial_i||,i=j$, $g_{ij}(x)=\sum (\partial_i \partial_j)^2,i\neq j$, o que representa a derivada direcional \draftnote{Gabriel: Verificar se isso faz sentido}. Ele então, a partir dessa disso, constrói uma geodésica parametrizando pelos ótimos de $g$ e, como ele assume que esta variedade é geodesicamente completa, ele consegue atribuir uma correlção da variedade ao espaço $\mathbb{R}$ chegando a condlusão que a variedade não possui nem ponto de singularidade nem contorno que possa-se chegar em um tempo fnito e, por fim, que o Teorema de Hopf-Rinow-De Rham é satisfeito \draftnote{Gabriel: Escrever melhor essa parte}
 
-\emph{Moments of point distributions. Let $\{x_0,...,x_k\}$ be a set of $k + 1$ points on a Manifold provided with weights $(\lambda_0,...,\lambda_k)$ that do not sum to zero. We may see these weighted points as the weighted sum of Diracs $\mu (x)=i \lambda i\delta xi(x)$. As this distribution is not normalized and weights can be negative, it is generally not a probability. It is also singular with respect to the Riemannian measure. Thus,we have to take care in defining its moments as the Riemannian log and distance functions are not smooth at the cut-locus.}
+\emph{DEFINITION 1 [(k +1)-pointed/punctured Riemannian manifold]. Let {x0,...
+xk} ∈ Mk+1 be a set of k + 1 reference points in the n-dimensional Riemannian
+manifold M and C(x0,...,xk) = k
+
+i=0 C(xi) be the union of the cut loci of these
+points. We call the object consisting of the smooth manifold M and the k + 1
+reference points a (k + 1)-pointed manifold. Likewise, we call the submanifold
+M∗(x0,...,xk) = M \ C(x0,...,xk) of the noncut points of the k + 1 reference
+points a (k + 1)-punctured manifold.
+
+On M∗(x0,...,xk), the distance to the points {x0,...,xk} is smooth. The Rie-
+mannian log function −xx
+
+→
+i = logx(xi) is also well defined for all the points of
+M∗(x0,...,xk). Since the cut locus of each point is closed and has null measure,
+the punctured manifold M∗(x0,...,xk) is open and dense in M, which means that
+it is a submanifold of M. However, this submanifold is not necessarily connected.
+For instance in the flat torus (S1)n, the cut-locus of $k + 1 \leq n$ points divides the torus into kn disconnected cells.}
+Nesta seção
+
+\emph{DEFINITION 2 [Weighted moments of a (k + 1)-pointed manifold]. Let
+$(\lambda_0,...,\lambda_k) \in \mathbb{R}^{k+1}$ such that 
+$i \lambda_i= 0$. We call λi = λi/(k
+
+j=0 λj ) the normal-
+ized weights. The weighted pth-order moment of a (k + 1)-pointed Riemannian
+
+manifold is the p-contravariant tensor
+(2) Mp(x,λ) =
+i
+λi
+−xx
+→
+i ⊗ −xx
+→
+i ⊗···⊗ −xx
+→
+i
+p times
+.
+
+BARYCENTRIC SUBSPACE ANALYSIS ON MANIFOLDS 2717
+The normalized pth-order moment is Mp(x,λ) = Mp(x,λ) = Mp(x,λ)/M0(λ).
+Both tensors are smoothly defined on the punctured manifold M∗(x0,...,xk).
+The 0th-order moment M0(λ) = 
+
+i λi = 1Tλ is the mass. The pth-order mo-
+ment is homogeneous of degree 1 in λ while the normalized pth-order moment is
+
+naturally invariant by a change of scale of the weights. For a fixed weight λ, the
+first-order moment M1(x,λ) = 
+i λi
+−→
+xxi is a smooth vector field on the manifold
+M∗(x0,...,xk) whose zeros will be the subject of our interest. The second and
+
+higher-order moments are smooth (p, 0) tensor fields that will be used in contrac-
+tion with the Riemannian curvature tensor.
+
+Affinely independent points on a manifold. In a Euclidean space, k + 1 points
+
+are affinely independent if their affine combination generates a k dimensional sub-
+space, or equivalently if none of the point belong to the affine span of the k others.
+
+They define in that case a k-simplex. Extending these different definitions to mani-
+folds lead to different notions. We chose a definition which rules out the singulari-
+ties of constant curvature spaces and which guaranties the existence of barycentric
+
+subspaces around reference point. In the sequel, we assume by default that the
+k + 1 reference points of pointed manifolds are affinely independent (thus k ≤ n).
+Except for a few examples, the study of singular configurations is left for a future
+work.}
+\emph{DEFINITION 3 (Affinely independent points). A set of k + 1 points {x0,...,
+xk} is affinely independent if no point is in the cut-locus of another and if all the
+sets of k vectors {logxi
+(xj )}0≤j
+=i≤k ∈ TxiMk are linearly independent.}
+
+
 \section{Commented and Expanded Section 3: Exponential Barycentric Subspaces
 (EBS) and affine spans}
+
+\emph{DEFINITION 4 [Projective space of barycentric coordinates (weights)]. Bary-
+centric coordinates of k + 1 points live in the real projective space RPn = (Rk+1 \
+
+{0})/R∗ from which we remove the codimension 1 subspace 1⊥ orthogonal to the
+point 1 = (1 : 1 :··· 1):
+P∗
+k = 
+λ = (λ0 : λ1 :···: λk) ∈ RPn s.t. 1λ
+= 0
+
+.
+
+Projective points are represented by lines through 0 in Figure 1. Standard rep-
+resentations are given by the intersection of the lines with the “upper” unit sphere
+
+Sk of Rk+1 with north pole 1/
+
+√k + 1 or by the affine k-plane of Rk+1 passing
+through the point 1/(k + 1) and orthogonal to this vector. This last representation
+give the normalized weight λi = λi/(k
+
+j=0 λj ): the vertices of the simplex have
+homogeneous coordinates (1 : 0 :···: 0)···(0 : 0 :···: 1). To prevent weights to
+sum up to zero, we have to remove the codimension 1 subspace 1⊥ orthogonal
+to the projective point 1 = (1 : 1 :···: 1) (blue line in Figure 1). This excluded
+subspace corresponds to the equator of the pole 1/
+
+√k + 1 for the sphere represen-
+tation (points C and −C identified in Figure 1), and to the projective completion
+
+(points at infinity) of the affine k-plane of normalized weights.}
 
 \section{Commented and Expanded Section 4: Fréchet/Karcher barycentric subspaces}
 
@@ -202,6 +331,8 @@ Teste
 %bib/edge-linking,bib/deformable,bib/medical,bib/graphics,bib/texture,bib/imaging,bib/tracking,bib/shape-papers,bib/bib-header,bib/video,bib/math-books,bib/math,bib/psych-books,bib/metric,bib/edge,bib/leymarie_pami_scaffold,bib/vision-books,bib/vision,bib/nn-search,bib/multidimscaling,bib/psychophysics,bib/indexing,bib/segmentation,bib/image-databases,bib/shape-matching,bib/neuro,bib/skeleton,bib/skeleton2D,bib/aspect-graphs,bib/recognition,bib/surface-networks,bib/ridge,bib/proceedings,bib/perceptual-grouping,bib/continuation,bib/graph-matching-2,bib/cooper}
 %DAMON, J. and MARRON, J. S. (2013). Backwards principal component analysis and principal nested relations. J. Math. Imaging Vision 50 107–114. MR3233137
 %\input{paper.bbl}
+% Le, Huiling. “A DIFFUSION PROCESS ASSOCIATED WITH FRÉCHET MEANS.” The Annals of Applied Probability, vol. 25, no. 6, 2015, pp. 3033–3046., www.jstor.org/stable/24521650. Accessed 30 June 2021.
+%WILSON, R. C., HANCOCK, E. R., PEKALSKA, E. and DUIN, R. P. W. (2014). Spherical and hyperbolic embeddings of data. IEEE Trans. Pattern Anal. Mach. Intell. 36 2255–2269.
 
 % Assinaturas:
 %\newpage
