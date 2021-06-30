@@ -134,9 +134,9 @@ so that if PCA has dimension $n$ then the lower dimensional subspaces that are
 ``best fit'' for the data are simply the same PCA subspace, but with the lower
 dimension removed (the dimension along which the data has least variance). 
  
- \juliana{iuhpojnjmpm}
-
-
+ \draftnote{As partes que eu, Juliana, acrescentar colocarei em vermelho para facilitar pra mim. Depois tirarei.}
+ \juliana{No caso euclidiano, na abordagem \textit{forward} inicia-se com a média da amostra para encontrar a primeira autodireção da matriz de covariância, que determina a reta que melhor ajusta os dados. O processo segue de forma iterativa resultando numa sequência de espaços afins que melhor ajustam os dados, "nested" em ordem crescente de dimensão. Já na abordagem \textit{backward}, inicia-se com o melhor espaço afim de dimensão r que ajusta os dados. Dentro dele procura-se o melhor espaço afim de ajuste de dimensão r-1, etc. O que também resulta em uma sequência dos melhores espaços de ajuste, indexados pela dimensão. pelo teorema de Pitágoras, ambas as abordagens resultam na mesma sequência de espaços afins. Porém, em espaços não euclidianos a igualdade das sequências não se verifica. (DAMON, J. MARRON, J. S. 2013) }
+ 
 {
 \vspace{1em}
 \frame{\includegraphics[width=0.8\linewidth]{figs/pennec2018-p1-paragraph2-intro.png}}
@@ -144,7 +144,12 @@ dimension removed (the dimension along which the data has least variance).
 }
 \draftnote{Revisar aqui a media de Fréchet e também rapidamente o Karcher mean}
 \draftnote{Gabriel's comment}
+\\
 Neste trecho, o autor nos informa as condições as quais devemos ter para que tal generalização seja feita. Uma delas é que definamos um equivalente a subespaços afins em termos de variedades. Primeiramente o que é um espaço afim? Um espaço afim é definido informalmente como um espaço que não possui uma origem definida \draftnote{Notas do Gabriel: Por favor me expliquem melhor para que eu possa explicar corretamente}.
+\\
+\juliana{Seja $V$ um espaço vetorial. $W \subset V$ é um subespaço afim de V se existir um vetor $w_0 \in V$ e um subespaço vetorial $V_0 \subset V$ tal que $$W=\{w_0 +v ; v \in V_0 \}.$$}
+\juliana{Se $V=\mathbb{R}^2$ ou $V=\mathbb{R}^3$. O subespaço afim W é o subconjunto obtido da translação do subespaço vetorial $V_0$ (que por definição passa pela origem (0,0) ou (0,0,0), respectivamente) de modo que a origem esteja em $w_0$, ou seja, W é um subconjunto "paralelo'' a $V_0$ que passa pelo ponto $w_0$.}
+
 Pode-se dizer também, segundo o autor, que para um espaço de dimensão zero, ou seja, um espaço discreto \draftnote{Gabriel's comment: link de onde tirei isso \url{https://encyclopediaofmath.org/wiki/Zero-dimensional_space}} uma abordagem com o uso da média de Fréchet no conjunto da minima da variança é naturalmente pensada quando aborda-se o problema em termos de variedades. A média de Fréchet é uma generalização aos centróides, onde é encontrado um ponto em um conjunto de pontos que possa melhor representar a tendência dos mesmos no grupo. 
 Em termos de variedades, supondo que tenhamos uma nuvem de pontos discreto dentro de um espaço de variedades, o uso da média de Fréchet nos ajudaria a encontrar a tendencia desta nuvem, proporcionando um melhor escolha de componentes pela PCA \draftnote{Gabriel's comment: Foi pelo menos o que eu a principio entendi deste trecho}
 
@@ -195,6 +200,7 @@ Teste
 \bibliographystyle{ieeetr}
 \bibliography{refs}
 %bib/edge-linking,bib/deformable,bib/medical,bib/graphics,bib/texture,bib/imaging,bib/tracking,bib/shape-papers,bib/bib-header,bib/video,bib/math-books,bib/math,bib/psych-books,bib/metric,bib/edge,bib/leymarie_pami_scaffold,bib/vision-books,bib/vision,bib/nn-search,bib/multidimscaling,bib/psychophysics,bib/indexing,bib/segmentation,bib/image-databases,bib/shape-matching,bib/neuro,bib/skeleton,bib/skeleton2D,bib/aspect-graphs,bib/recognition,bib/surface-networks,bib/ridge,bib/proceedings,bib/perceptual-grouping,bib/continuation,bib/graph-matching-2,bib/cooper}
+%DAMON, J. and MARRON, J. S. (2013). Backwards principal component analysis and principal nested relations. J. Math. Imaging Vision 50 107–114. MR3233137
 %\input{paper.bbl}
 
 % Assinaturas:
