@@ -186,6 +186,16 @@ Os espaços hiperbólicos são escolhidos por serem espaços homogêneos onde a 
 
 Neste trecho o autor começa a nos mostrar o ferramental usado para o artigo. Primeiramente ele deifine uma variedade $M$ com um produto escalar suave, conhecido como métrica Riemmaniana no espaço tangente $T_{x}M$ em um ponto $x$ de $M$ e em seguida ele constrói uma função $g(x)$ tal que $g_{ij}(x)=\langle \partial_i | \partial_j \rangle $. Isso significa que $g_{ij}(x)=||\partial_i||,i=j$, $g_{ij}(x)=\sum (\partial_i \partial_j)^2,i\neq j$, o que representa a derivada direcional \draftnote{Gabriel: Verificar se isso faz sentido}. Ele então, a partir dessa disso, constrói uma geodésica parametrizando pelos ótimos de $g$ e, como ele assume que esta variedade é geodesicamente completa, ele consegue atribuir uma correlção da variedade ao espaço $\mathbb{R}$ chegando a condlusão que a variedade não possui nem ponto de singularidade nem contorno que possa-se chegar em um tempo fnito e, por fim, que o Teorema de Hopf-Rinow-De Rham é satisfeito. \draftnote{Gabriel: Escrever melhor essa parte}
 
+\vspace{1em}
+\frame{\includegraphics[width=0.95\linewidth]{figs/pennec2018-cutlocus.PNG}}
+\vspace{1em}
+
+\juliana{Neste parágrafo o autor introduz o mapa exponencial $exp_x(v)$, que mapeia cada vetor $v \in T_xM$ em um ponto na variedade, obtido após 1 unidade de tempo pela geodésica, isto é, $exp_x(v)=\gamma(x,v)(1)$. O mapa exponencial é um difeomorfismo local numa vizinhança de 0, sendo sua inversa: $\overrightarrow{xy}=\log_x y = v \in T_xM$.}
+
+
+\juliana{Se $M$ é uma variedade riemanniana completa e $\gamma (x)$ uma geodésica normalizada, com $\gamma (0)=x$, para $t>0$ e suficientemente pequeno, $d(\gamma (0), \gamma (t))=t$, ou seja, $\gamma ([0,t])$ é uma geodésica minimizante. Se existe $t_1$ tal que $d(\gamma (0), \gamma (t_1))>t$, então para todo $t\geq t_1$ a geodésica não é minimizante. Deste modo, se $d(\gamma (0), \gamma (t))=t$ no intervalo $[0,t_0]$, então $\gamma (t_0)$ é chamado de ponto mínimo de $x$ ao longo de $\gamma$.}
+\juliana{O conjunto $C(x) \in T_xM$, chamado de \textit{tangential cut locus}, é o conjunto dos vetores $tv$ onde a geodésica $\gamma(x,v)(t)$ deixa de ter comprimento mínimo. Assim, o \textit{cut locus} de $x$ (ou local dos pontos mínimos de $x$), $\mathcal{C}(x)= exp_x(C(x)) \subset M$, é a união dos pontos mínimos de $x$ ao longo de todas as geodésicas que partem de $x$ (do CARMO, 2015). Ou, como escreve o autor, é o fecho do conjunto de pontos onde várias geodésicas minimizantes iniciando em $x$ se encontram.}
+
 \begin{center}
 \fbox{\parbox[c]{11cm}{DEFINITION 1 ((k+1)-pointed/punctured Riemannian manifold). 
 \\
@@ -197,7 +207,8 @@ Neste trecho o autor começa a nos mostrar o ferramental usado para o artigo. Pr
 For instance in the flat torus $(S_1)^n$, the cut-locus of $k + 1 \leq n$ points divides the torus into kn disconnected cells.}}
 \end{center}
 
-Nesta seção
+Nesta definição, o autor essencialmete começa a com a definição de um conjunto de $k+1$ pontos da variedade, que pode ser um conjunto de dados quaisquer e $C(x_0,x_1,...,x_k) =\bigcup_{i=0}^{k} C(x_i)$ como ele diz, é \sout{o corte local} \juliana{a união dos \textit{cut loci} ou locais dos pontos mínimos} desse conjunto de dados.
+\sout{O \juliana{\textit{cut locus}} é um conjunto de vetores nos espaço tangente da variedade que minimizam o mapeamento exponencial (Esta minimização é dada pela distância geodésica) em torno de um ponto. Com isso $C(x_0,x_1,...,x_k)$ pode ser interpretado como}
 
 \vspace{1em}
 \frame{\includegraphics[width=0.95\linewidth]{figs/pennec2018-def2.PNG}}
@@ -219,10 +230,9 @@ Nesta seção
 
 \juliana{No primeiro parágrafo o autor define de duas formas diferentes, mas equivalentes, subespaços afins em espaços euclidianos e destaca que a equivalência não verifica para variedades.}
 
-\\
-\juliana{Podemos dizer que os coeficientes $\lambda_i's$ da definição de Aff$(x_0 ,..., x_k)$ (que chamaremos de $\alpha_i$) estão normalizados, enquanto os $\lambda_i's$ da coordenada baricêntrica não necessariamente. O vetor $\lambda$ é múltiplo escalar do vetor $\alpha$.} 
+\juliana{Podemos dizer que os coeficientes $\lambda_i's$ da definição de Aff$(x_0 ,..., x_k)$ (que chamaremos de $\underline{\lambda}_i$) estão normalizados, enquanto os $\lambda_i's$ da coordenada baricêntrica não necessariamente. O vetor $\lambda$ é múltiplo escalar do vetor $\underline{\lambda}$.} 
 
-\juliana{O $k$-simplex dos pontos $x_0, ..., x_k$ afins independentes (dimensão de Aff$(x_0 ,..., x_k)$ é $k-1$) é o conjunto de todas as combinações afins $\sum_{i=0}^k \lambda_i x_i, com \sum_{i=0}^k \lambda_i=1$, tais que $\lambda_i \geq 0$ (fecho convexo).}
+\juliana{O $k$-simplex dos pontos $x_0, ..., x_k$ afins independentes (dimensão de Aff$(x_0 ,..., x_k)$ é $k-1$) é o conjunto de todas as combinações afins $\sum_{i=0}^k \lambda_i x_i$, com $\sum_{i=0}^k \lambda_i=1$, tais que $\lambda_i \geq 0$ (fecho convexo).}
 
 {
 \vspace{1em}
@@ -249,8 +259,13 @@ subspaces}
 \section{Commented and Expanded Section 7: Discussion}
 
 \section{Commented and Expanded Appendix: Proof of Theorem 8}
+<<<<<<< HEAD
+Nesta seção o autor nos provém primeiramente com uma função que pega e leva de $x  a y \notin C(x)$ em respeito ao tempo e ele também nos informa que revertendo o tempo ao longo da geodésica, tem-se $\gamma_{(x,\overrightarrow{xy})}(t)=\gamma_{(y,\overrightarrow{yx})}(1-t)$, e ele também diz que em  $\dot{\gamma_{(x,\overrightarrow{xy})}}(1)=\dot{\gamma_{(y,\overrightarrow{yx})}}(0)=-\overrightarrow{yx}$. 
+Isto que o autor faz em um espaço geodésico é similar a uma abordagem em uma parametrização em um espaço euclidiano $x(t)=x_{0}t+(1-t)x_{1}$ e pelo que pode-se entender $\overrightarrow{xy}$ é o vetor distância de $x$ a $y$, portanto faz sentido que $\overrightarrow{xy}=-\overrightarrow{yx}$. Então ele define que $\gamma_{(x,\overrightarrow{xy})}(t)=exp_{x}(t \overrightarrow{xy})$, temos $\overrightarrow{yx}=-D exp_{x}|_{\overrightarrow{xy}}\overrightarrow{xy}$\draftnote{Gabriel's note: Por favor expandir isso!}. Pelo fim do parágrafo é definido que $(D exp_{x}|_{\overrightarrow{xy}}\overrightarrow{xy})D log_{x}|_{y} = Id$ pelo fato de $exp_{x}(log_{x}(y))=y$ e finalmente ele considera que se tanto $Dexp_{x}$ quanto $Dlog_{x}$ possuírem o posto aquivalente ao expaço quociente da variedade com o domínio em x, podemos criar uma função inversa como descrito na equação (16). No segundo parágrafo, tendo as funções definidas ele considera uma bola aberta geodésica $B(x_0,\xsi)$ e se for construído um domínio $D_{\xsi}=M \\ C(B(x_0,\xsi)$ em q $log_{x}(y)$ seja suave e bem definida na bola e para todo y em D, a simetria é preservada, portanto (16) pode ser reescrito como (17) 
+=======
 
 Nesta seção o autor nos provém primeiramente com uma função que pega e leva de $x  a y \notin C(x)$ em respeito ao tempo e ele também nos informa que revertendo o tempo ao longo da geodésica, tem-se $\gamma_{(x,\overrightarrow{xy})}(t)=\gamma_{(y,\overrightarrow{yx})}(1-t)$, e ele também diz que em  $\dot{\gamma_{(x,\overrightarrow{xy})}}(1)=\dot{\gamma_{(y,\overrightarrow{yx})}}(0)=-\overrightarrow{yx}$. Isto que o autor faz em um espaço geodésico é similar a uma abordagem em uma parametrização em um espaço euclidiano $x(t)=x_{0}t+(1-t)x_{1}$ e pelo que pode-se entender $\overrightarrow{xy}$ é o vetor distância de $x$ a $y$, portanto faz sentido que $\overrightarrow{xy}=-\overrightarrow{yx}$. Então ele define que $\gamma_{(x,\overrightarrow{xy})}(t)=exp_{x}(t \overrightarrow{xy})$, temos $\overrightarrow{yx}=-D exp_{x}|_{\overrightarrow{xy}}\overrightarrow{xy}$\draftnote{Gabriel's note: Por favor expandir isso!}. Pelo fim do parágrafo é definido que $(D exp_{x}|_{\overrightarrow{xy}}\overrightarrow{xy})D log_{x}|_{y} = Id$ pelo fato de $exp_{x}(log_{x}(y))=y$ e finalmente ele considera que se tanto $Dexp_{x}$ quanto $Dlog_{x}$ possuírem o posto aquivalente ao expaço quociente da variedade com o domínio em x, podemos criar uma função inversa como descrito na equação (16). No segundo parágrafo, tendo as funções definidas ele considera uma bola aberta geodésica $B(x_0,\xsi)$ e se for construído um domínio $D_{\xsi}=M \setminus C(B(x_0,\xsi)$ em q $log_{x}(y)$ seja suave e bem definida na bola e para todo y em D, a simetria é preservada, portanto (16) pode ser reescrito como (17) 
+>>>>>>> 4a1a7d5d79f47d0a7ac732be94d0526a870c249a
 
 %\section{Commented and Expanded Supplementary Material}
 
