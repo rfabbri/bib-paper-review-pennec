@@ -20,6 +20,11 @@
 \usepackage{macrosfabbri-dg}
 \usepackage{xcolor}
 \usepackage{ulem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+
 
 % ------------------------------------------------------------------------------
 % Paper draft Comments and TODO's
@@ -38,9 +43,36 @@
 \newcommand{\juliana}[1]{\textcolor{red}{#1}}
 
 
+\makeindex
+
+
+% Redefine the plain page style
+\fancypagestyle{plain}{%
+\fancyfoot[CE,CO]{\hypersetup{ hidelinks = true, }\textsc{confidential draft, please cite}~\cite[IJCV]{Fabbri:Kimia:IJCV2016}\hypersetup{ hidelinks = false, }}
+\fancyfoot[LE,LO,RE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+\fancyhead[RE]{}
+\fancyhead[RO]{}
+}
+
 \begin{document}
 
 \input{titlepage}
+
+
+\tableofcontents
+\newpage
+
+%\renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+
+
+
+\pagestyle{fancy}
+%\fancyhead[LE]{\nouppercase{\leftmark}}
+%\fancyhead[RE]{\thepage}
+%\fancyhead[LO]{\nouppercase{\rightmark}}
+%\fancyhead[RO]{\thepage}
+
 
 \section{Preliminares}
 
@@ -69,10 +101,64 @@ algumas construções básicas do \LaTeX\ como \emph{Theorem} ou
 \emph{Definition}.
 
 
-\section{Tabela de Notação}
+\section{Notação e Definções Básicas}\label{sec:notation}
 
 This section has a summary of the notation used in the paper, 
-mapped to the master notation.
+mapped to the master notation, Table~\ref{tab:notation}.
+\begin{table}
+  \renewcommand{\arraystretch}{1.4}
+  \renewcommand{\tabcolsep}{0.2cm}
+  \begin{center}
+  \small
+  \begin{tabularx}{\textwidth}{cX}
+  \multicolumn{1}{c}{\textbf{Symbol / Term}} &
+  \multicolumn{1}{l}{\textbf{Description}}\\\toprule
+  $\mathcal M$ & Diferential manifold\\
+  $T_x \mathcal M$& Tangent space\\
+  $\gamma_{(x,v)}(t)$& Geodesic starting from the point $x$ with the tangent vector $v \in T_x M$\\
+  $exp_x (v)$& Exponential map\\
+  $\overrightarrow{xy}=\log_x (y)$& The inverse of exponential map\\
+  $n$ & Dimension of the manifold where data lives. Usually $n=k+1$\\
+  $k$ & Dimension of the affine subspace, $k+1$ is the number of reference
+  points. Usually $n = k+1$ \\
+  BSA & Barycentric Subspace Analysis\\
+  FBS & Frechet Baricentric Subspaces, genearlize affine subspaces to
+  manifolds using a global minimization\\
+  KBS & Karcher Barycentric Subspaces, generalize affine subspaces to
+  manifolds using local minimization\\
+  EBS & Exponential Barycentric Subspaces - Completion of all critical points to
+  prevent disconnected patches\\
+  Geodesically complete manifold & (Complete Manifold) Domain of all geodesics can be extended to
+  $\mathbb R$\\
+  $D(x)$ & Injectivity domain: maximal domain in $T_x\mathcal M$ where exp is diffeo\\
+  $C(x)$ & Tangential cut locus (cut locus on $T_x\mathcal M$. $\partial D$)\\
+    $\mathcal C(x)$ & Cut locus. The points on $\mathcal M$ corresp.\ to $C(x)$.
+    Has null measure. Closed.\\\bottomrule
+ \end{tabularx}
+ \end{center}
+ \caption{Notation \todo{atualizar}.} 
+ \label{tab:notation} 
+\end{table}
+
+We will use the term ``linear'' and ``affine'' interchangeably at times.
+Wen we say ``linear'', whether we mean an actual affine space or not, 
+will be clear from the context, when the difference matters. When we 
+want to emphasize that the origin of the space is might not be at 0,
+we will explicitly say ``affine'' instead of ``linear'' space.
+
+Um espaço afim é definido informalmente como um espaço que não possui uma origem
+definida.
+
+\juliana{Seja $V$ um espaço vetorial. $W \subset V$ é um subespaço afim de V se
+existir um vetor $w_0 \in V$ e um subespaço vetorial $V_0 \subset V$ tal que
+$W=\{w_0 +v ; v \in V_0 \}$.} \juliana{Se $V=\mathbb{R}^2$ ou $V=\mathbb{R}^3$,
+o subespaço afim W é o subconjunto obtido da translação do subespaço vetorial
+$V_0$ (que por definição passa pela origem (0,0) ou (0,0,0), respectivamente) de
+modo que a origem esteja em $w_0$, ou seja, W é um subconjunto "paralelo'' a
+$V_0$ que passa pelo ponto $w_0$.}
+
+
+
 
 \section{Commented and Expanded Abstract}
 
@@ -103,12 +189,14 @@ Analysis). %
 Barycentric subspaces are implicitly defined
 as the locus of weighted means of k + 1 reference points with positive or
 negative weights summing up to one. Depending on the definition of the mean, we
-obtain the Fréchet, Karcher or Exponential Barycentric subspaces (FBS/KBS/EBS).
+obtain the Fréchet, Karcher or Exponential Barycentric subspaces
+(\textbf{FBS/KBS/EBS}).
 Generalizing affine subspaces to manifolds with a minimization procedure (\ie,
-Fréchet or Karcher barycentric subspaces) leads to small disconnected patches
-that, in the case of constant curvature spaces, do not cover complete lower dimensional subspheres (resp.
-sub-pseudospheres). Considering the completion
-(the affine span) of all critical points (the exponential barycentric subspace)
+FBS or KBS) leads to small disconnected patches
+that, in the case of constant curvature spaces, do not cover complete lower
+dimensional subspheres (for spherical spaces) or sub-pseudospheres (for hyperbolic
+manifolds). Considering the completion
+(the affine span) of all critical points (EBS)
 is needed to cover the full sub-(pseudo)-sphere~\cite{Pennec:Advances:Chapter:2020}.
 \indraftnote{juliana: usar a descricao acima na sua quali}
 
@@ -125,7 +213,7 @@ podem se aplicar a espaços que a rigor não são variedades diferenciáveis, co
 discretizações~\cite{Video:Geodesics:Crane}, ou a espaços que são variedades
 diferenciáveis, porém são não-Riemannianas. É possível que algumas das ideias
 de BSA se apliquem a esses casos. Alguns exemplos estão citados na
-Seção \ref{sec:discussion} (discussao), como alguns grupos de Lie, que são
+Seção~\ref{sec:discussion} do presente manuscrito (discussao no paper original), como alguns grupos de Lie, que são
 naturalmente dotados de uma
 conexão bi-invariante e simétrica, mas que pode ser métrica ou não.
 
@@ -173,7 +261,7 @@ $k-1$ componentes principais é $\mathbb R^{k-1}$ que melhor explica os dados co
 $k-1$ dimensões \juliana{(Não ficaria melhor: ``O espaço afim de dimensão $d=k-1$ formado pelos $k-1$ componentes principais é o espaço afim de dimensão $d$ que melhor explica os dados'')}, no sentido de que a diferença (erro) para usar $k$ dimensões é mínima. Esse erro, estatisticamente falando, é o AUV (accumulated unexplained
 variances) referido no abstract. 
 
-Os subespaços baricêntricos são naturalmente encadeados (nested) como o feixo
+Os subespaços baricêntricos são naturalmente encadeados (nested) como o fecho
 afim. Imagine em 3D 2 pontos, o fecho convexo seria uma reta; com três pontos o
 feixo seria um triângulo (e o plano do triângulo seria o subespaço
 baricêntrico, que coincide com subespaço linear \juliana{(linear ou afim?)} 2D); por fim, para um ponto fora do plano, o fecho convexo seria um tetraedro, que seria análogo a um espaço baricêntrico 3D ou o $\mathbb R^3$ no caso de álgebra linear. Dessa forma, o segmento de reta contém os pontos, e a face do triângulo contém as retas e os pontos. Isto é a estrutura hierárquica de \textbf{simplical complex}
@@ -183,7 +271,7 @@ hierárquica de flags sendo dada pelo \emph{face lattice}. Conforme o autor
 relata mais ao final da introdução, a ordem dos pontos é importante para se
 definir quais são os espaços estratificados definidos pelos pontos. Por exemplo,
 um quadrado pode ter um dos vértices como sendo mais importante (a ``média''),
-um dos lados faces, etc. 
+um dos lados, faces, \etc. 
 
 \section{Commented and Expanded Section 1: Introduction}\label{sec:intro}
 
@@ -243,31 +331,23 @@ dimension removed (the dimension along which the data has least variance).
 }
 \draftnote{Revisar aqui a media de Fréchet e também rapidamente o Karcher mean}
 
-Neste trecho, o autor nos informa as condições as quais devemos ter para que tal
+Neste trecho, o autor nos informa as condições que devemos ter para que tal
 generalização seja feita. Uma delas é que definamos um equivalente a subespaços
-afins em termos de variedades. Primeiramente o que é um espaço afim? Um espaço
-afim é definido informalmente como um espaço que não possui uma origem definida.
-
-\juliana{Seja $V$ um espaço vetorial. $W \subset V$ é um subespaço afim de V se
-existir um vetor $w_0 \in V$ e um subespaço vetorial $V_0 \subset V$ tal que
-$W=\{w_0 +v ; v \in V_0 \}$.} \juliana{Se $V=\mathbb{R}^2$ ou $V=\mathbb{R}^3$,
-o subespaço afim W é o subconjunto obtido da translação do subespaço vetorial
-$V_0$ (que por definição passa pela origem (0,0) ou (0,0,0), respectivamente) de
-modo que a origem esteja em $w_0$, ou seja, W é um subconjunto "paralelo'' a
-$V_0$ que passa pelo ponto $w_0$.}
+afins em termos de variedades. Ver Seção~\ref{sec:notation} do presente
+manuscrito para a definição de espaço afim).
 
 Pode-se dizer também, segundo o autor, que para um espaço de dimensão zero, ou
-seja, um espaço discreto, \draftnote{Gabriel's comment: link de onde tirei isso
-\url{https://encyclopediaofmath.org/wiki/Zero-dimensional_space}} uma abordagem
+seja, um espaço discreto,  uma abordagem
 com o uso da média de Fréchet no conjunto da minima da variança é naturalmente
-pensada quando aborda-se o problema em termos de variedades. A média de Fréchet
-é uma generalização aos centróides, onde é encontrado um ponto em um conjunto de
+pensada quando aborda-se o problema em termos de
+variedades~\cite{wikipedia:zero:dimensional:2021}.
+A média de Fréchet
+é uma generalização dos centróides, onde é encontrado um ponto em um conjunto de
 pontos que possa melhor representar a tendência dos mesmos no grupo.  Em termos
 de variedades, supondo que tenhamos uma nuvem de pontos discretos dentro de uma
 variedade, o uso da média de Fréchet nos ajudaria a encontrar a
 tendencia desta nuvem, proporcionando uma melhor escolha de componentes pela
-PCA. \draftnote{Gabriel's comment: Foi pelo menos o que eu a principio entendi
-deste trecho}
+PCA. 
 
 \juliana{A média de Fréchet é uma generalização da média aritmética em espaços
 métricos abstratos e, em geral, não é única (Ginestet, Simmons, Kolaczyk,
@@ -294,7 +374,7 @@ seccional também é. Portanto, em uma variedade Riemanniana completa,
 simplesmente conexa e de curvatura seccional não-positiva a média de Fréchet é
 única (POLANÍA, 2014). A média de Frechét é considerada uma média global,
 enquanto médias locais de medidas de probabilidade em variedades riemannianas
-são  chamadadas de médias de Karcher (ARNAUDON, BARBARESCO,YANG.  2011)}
+são  chamadadas de médias de Karcher (ARNAUDON, BARBARESCO,YANG.  2011).}
 \draftnote{Juliana's comment:Explicar melhor}
 
 Ver mais sobre médias de Frechet e Karcher
@@ -306,14 +386,13 @@ em~\cite{Pennec:Advances:Chapter:2020}.
 \frame{\includegraphics[width=0.8\linewidth]{figs/pennec2018-tPCA.png}}
 \vspace{1em}
 \end{center}
-
 \begin{center}
 \vspace{1em}
 \frame{\includegraphics[width=0.8\linewidth]{figs/pennec2018-PGA.png}}
 \vspace{1em}
 \end{center}
 
-Se a média de Frechet seria análogo ao ``subespaço principal''  de dimensão 0
+Se a média de Frechet seria análoga ao ``subespaço principal''  de dimensão 0
 (origem) do PCA, então os subespaços de dimensão 1, 2, 3, seriam naturalmente
 ancorados nessa média. Para definir esses espaços, podemos utilizar a estrutura
 de espaço vetorial induzida pelo espaço tangente nos caminhos da variedade que passam por esse ponto
@@ -322,7 +401,8 @@ lineares passando pela origem (vetores) do plano tangente, é induzida nos camin
 não-lineares da variedade, consistindo de geodésicas. Nessa estrutura, é
 possível somar caminhos, somando-se os vetores tangentes no plano tangente.
 De certa forma, essa soma vira multiplicação de caminhos, pois o mapa
-exponencial de uma soma de vetores tangentes é a multiplicação de caminhos.
+exponencial de uma soma de vetores tangentes é a multiplicação de caminhos
+(dadas as condições adequadas).
 Logo, se pegarmos todas as combinações lineares de dois vetores fixos em um espaço
 tangente de uma variedade 3D, podemos formar um sub-espaço geodésico 2D que tem
 uma estrutura subjacente de espaço vetorial, assim como no caso do PCA linear.
@@ -334,13 +414,9 @@ dos mapas exp e log.
 \section{Commented and Expanded Section 2: Riemannian geometry}
 
 \begin{center}
-\fbox{\parbox[c]{11cm}{In statistics, directional data occupy a place of
-choice [Dryden (2005), Huckemann and Ziezold (2006)]. Hyperbolic spaces are
-also the simplest models of negatively curved spaces which model the space of
-isotropic Gaussian parameters with the Fisher–Rao metric in information geome-
-try [Costa, Santos and Strapasson (2015)]. As nonflat constant curvature spaces,
-both spherical and hyperbolic spaces are now considered in manifold learning for
-embedding data [Wilson et al. (2014)]. Thus, they are ideal examples to illustrate the theory throughout this paper.}}
+\vspace{1em}
+\frame{\includegraphics[width=0.8\linewidth]{figs/pennec2018-sec2-1.PNG}}
+\vspace{1em}
 \end{center}
 
 Neste trecho, o autor nos revela neste parágrafo que em termos de simplicidade,
@@ -361,9 +437,13 @@ Os espaços hiperbólicos são escolhidos por serem espaços homogêneos onde a 
 \sout{Uma comparação com o espaço euclidiano, enquanto o simples é utilizando um triângulo construído no espaço euclidiano e no espaço hiperbólico, no espaço euclidiano, a soma dos ângulos "S=180$^{\circ}$'' no hiperbólico "S<180º''.} 
 \draftnote{Juliana's comment: a parte riscada achei desnecessária. O que acha?}
 
+
 \begin{center}
-\fbox{\parbox[c]{11cm}{\textit{Tools for computing on Riemannian manifolds.} We consider a differential manifold M endowed with a smooth scalar product  $\langle | \rangle$ called the Riemannian metric on each tangent space $T_x M$ at point x of M. In a chart, the metric is specified by the dot product of the tangent vector to the coordinate curves: $gij (x) = \langle \partial i | \partial j \rangle_{x}$ . The Riemannian distance between two points is the infimum of the length of the curves joining these points. Geodesics, which are critical points of the energy functional, are parametrized by arc-length in addition to optimizing the length. We assume here that the manifold is geodesically complete, that is, the definition domain of all geodesics can be extended to $\mathbb{R}$. This means that the manifold has no boundary nor any singular point that we can reach in a finite time. As an important consequence, the Hopf–Rinow–De Rham theorem states that there always exists at least one minimizing geodesic between any two points of the manifold (i.e., whose length is the distance between the two points).}}
+\vspace{1em}
+\frame{\includegraphics[width=0.8\linewidth]{figs/pennec2018-sec2-1-1.PNG}}
+\vspace{1em}
 \end{center}
+
 
 Neste trecho o autor começa a nos mostrar o ferramental usado para o artigo. Primeiramente ele \sout{define} \juliana{considera} uma variedade \juliana{diferencial} $M$ com um produto escalar suave, conhecido como métrica Riemmaniana no espaço tangente $T_{x}M$ em um ponto $x$ de $M$.
 
@@ -380,16 +460,16 @@ Neste trecho o autor começa a nos mostrar o ferramental usado para o artigo. Pr
 \juliana{Se $M$ é uma variedade riemanniana completa e $\gamma (x)$ uma geodésica normalizada, com $\gamma (0)=x$, para $t>0$ e suficientemente pequeno, $d(\gamma (0), \gamma (t))=t$, ou seja, $\gamma ([0,t])$ é uma geodésica minimizante. Se existe $t_1$ tal que $d(\gamma (0), \gamma (t_1))>t$, então para todo $t\geq t_1$ a geodésica não é minimizante. Deste modo, se $d(\gamma (0), \gamma (t))=t$ no intervalo $[0,t_0]$, então $\gamma (t_0)$ é chamado de ponto mínimo de $x$ ao longo de $\gamma$.}
 \juliana{O conjunto $C(x) \in T_xM$, chamado de \textit{tangential cut locus}, é o conjunto dos vetores $tv$ onde a geodésica $\gamma(x,v)(t)$ deixa de ter comprimento mínimo. Assim, o \textit{cut locus} de $x$ (ou local dos pontos mínimos de $x$), $\mathcal{C}(x)= exp_x(C(x)) \subset M$, é a união dos pontos mínimos de $x$ ao longo de todas as geodésicas que partem de $x$ (do CARMO, 2015). Ou, como escreve o autor, é o fecho do conjunto de pontos onde várias geodésicas minimizantes iniciando em $x$ se encontram.}
 
-\begin{center}
-\fbox{\parbox[c]{11cm}{DEFINITION 1 ((k+1)-pointed/punctured Riemannian manifold). 
-\\
-\textit{Let ${x_0,...,x_k} \in \mathcal{M}^{k+1}$ be a set of $k + 1$ reference points in the n-dimensional Riemannian manifold $\mathcal{M}$ and $C(x_0,...,x_k) = \bigcup_{i=0}^{k} C(x_i)$ be the union of the cut loci of these points. We call the object consisting of the smooth manifold $\mathcal{M}$ and the $k + 1$ reference points a $(k + 1)$-pointed manifold. Likewise, we call the submanifold $\mathcal{M}^{*}(x_0,...,x_k) = \mathcal{M} \ C(x_0,...,x_k)$ of the non-cut points of the $k + 1$ reference points a $(k + 1)$-punctured manifold.}}}
-\end{center}
+O autor diz que $D(x)$ é \emph{star-shaped}, ou seja, $\forall y \in D(x)$, existe um
+segmento de reta entre $x$ e $y$.
 
-\begin{center}
-\fbox{\parbox[c]{11cm}{On $\mathcal{M}{*}(x_0,...,x_k)$, the distance to the points ${x0,...,xk}$ is smooth. The Riemannian log function $\vec{x x_i} = \log_x(x_i)$ is also well defined for all the points of $\mathcal{M}{*}(x_0,...,x_k)$. Since the cut locus of each point is closed and has null measure, the punctured manifold $\mathcal{M}{*}(x_0,...,x_k)$ is open and dense in $\mathcal{M}$, which means that it is a submanifold of $\mathcal{M}$. However, this submanifold is not necessarily connected.
-For instance in the flat torus $(S_1)^n$, the cut-locus of $k + 1 \leq n$ points divides the torus into kn disconnected cells.}}
-\end{center}
+\vspace{1em}
+\frame{\includegraphics[width=0.95\linewidth]{figs/pennec2018-def1.PNG}}
+\vspace{1em}
+
+\vspace{1em}
+\frame{\includegraphics[width=0.95\linewidth]{figs/pennec2018-def1-1.PNG}}
+\vspace{1em}
 
 Nesta definição, o autor essencialmete começa a com a definição de um conjunto de $k+1$ pontos da variedade, que pode ser um conjunto de dados quaisquer e $C(x_0,x_1,...,x_k) =\bigcup_{i=0}^{k} C(x_i)$ como ele diz, é \sout{o corte local} \juliana{a união dos \textit{cut loci} ou locais dos pontos mínimos} desse conjunto de dados.
 \sout{O \juliana{\textit{cut locus}} é um conjunto de vetores nos espaço tangente da variedade que minimizam o mapeamento exponencial (Esta minimização é dada pela distância geodésica) em torno de um ponto. Com isso $C(x_0,x_1,...,x_k)$ pode ser interpretado como}
@@ -400,9 +480,11 @@ Em seguida ele cria uma subvariedade $\mathcal{M}{*}$ que pega todos os pontos q
 \vspace{1em}
 
 Na definicao 2 o autor define um conjunto de pesos $\lambda_i \in \mathbb{R}{k+1}$ tais que soma de todos os elementos seja diferente de 0 e tambehm um peso normalizado e define que o momento de peso de p-esima ordem de uma variedade de $k+1$ pontos eh dada pela equacao 2. Vale notar que essa momento p eh uma metrica Riemmaniana de ordem p, semelhante a norma-p no espaco euclidiano.
+
 \begin{center}
- \fbox{\parbox[c]{11cm}{DEFINITION 3 (Affinely independent points). A set of $k + 1$ points ${x_0,...,x_k}$ is affinely independent if no point is in the cut-locus of another and if all the sets of $k$ vectors ${\log_{x_i}
-(xj)}_{0\leq j\neq i \leq k} \in T_{x_i}\mathcal{M}^k$ are linearly independent.}}
+\vspace{1em}
+\frame{\includegraphics[width=1\linewidth]{figs/pennec2018-def3.PNG}}
+\vspace{1em}
 \end{center}
 
 Esta definicao e simplesmente o fato de que se temos $k+1$ dados no meu conjunto de dados,sao pontos "afinamente" independentes se eles nao possuirem minimo local comum e possamos construir um mapeamento logaritmico, cuja a base sao os conjuntos de vetores em que o mapeamento logaritmico pertence ao plano tangente da variedade
@@ -427,17 +509,21 @@ Esta definicao e simplesmente o fato de que se temos $k+1$ dados no meu conjunto
 }
 
 \section{Commented and Expanded Section 4: Fréchet/Karcher barycentric subspaces}
+
 {
 \vspace{1em}
 \frame{\includegraphics[width=1\linewidth]{figs/pennec2018-sec4-1.PNG}}
 \vspace{1em}
 }
+
 Nessa definição, o autor nos define os espaços baricêntricos de Fréchet ou Karcher. Essencialmente, ambos os espaços compostos pelos pontos que minimizam a variança, com a diferença em que no espaço de Fréchet contém apenas mínimos globais, quanto a de Karcher considera tembém os mínimos locais. A variânça nesses espaços é definida pela distância geodésica por que ela tem a capacidade de trazer tanto a média quanto a váriança para um ponto que pertence a variedade.
+
 {
 \vspace{1em}
 \frame{\includegraphics[width=1\linewidth]{figs/pennec2018-sec4-2.PNG}}
 \vspace{1em}
 }
+
 Aqui o autor mostra a relação entre os espaços de Karcher, Fréchet  e afim. O $\mathcal{M}^*$ é o conjunto de dados cujo a distância geodésica tem por gradiente o mapeamento logaritmico. as interseções dos espaços aos conjuntos de dados são simples de se entender: O $FBS \cap \mathcal{M}^*$ é o conjunto de pontos que minimizam globalmente o conjunto de dados, $KBS \cap \mathcal{M}^*$
 é o conjunto com todos os mínimos locais, $Aff \cap \mathcal{M}^*$ é o próprio mapeamento exponencial do conjunto de dados. Como a média de Fréchet é um caso específico da média de Karcher e a média de Karcher pega apenas alguns pontos do espaço afim. Então é natural que a relação $FBS \cap \mathcal{M}^* \subset KBS \cap \mathcal{M}^* \subset Aff \cap \mathcal{M}^* = EBS$
 
@@ -449,29 +535,33 @@ subspaces}
 \frame{\includegraphics[width=1\linewidth]{figs/pennec2018-sec5-1.PNG}}
 \vspace{1em}
 }
+
 Aqui o autor propõe pegar um subconjunto positivo do FBS, que pega todas as distância geodésicas dos pontos e da média de Fréchet. a partir disto, ele cria um espaço baricêntrico 
+
 {
 \vspace{1em}
 \frame{\includegraphics[width=1\linewidth]{figs/pennec2018-sec5-2.PNG}}
 \vspace{1em}
 }
+
 {
 \vspace{1em}
 \frame{\includegraphics[width=1\linewidth]{figs/pennec2018-sec5-3.PNG}}
 \vspace{1em}
 }
-{
- 
+
 {
 \vspace{1em}
 \frame{\includegraphics[width=1\linewidth]{figs/pennec2018-sec5-5.PNG}}
 \vspace{1em}
 }
+
 {
 \vspace{1em}
 \frame{\includegraphics[width=1\linewidth]{figs/pennec2018-sec5-6.PNG}}
 \vspace{1em}
 }
+
 {
 \vspace{1em}
 \frame{\includegraphics[width=1\linewidth]{figs/pennec2018-sec5-7.PNG}}
@@ -508,13 +598,14 @@ Agora ele passa a analisar na variedade. Para isso ele redefine a noção de fla
 \frame{\includegraphics[width=1\linewidth]{figs/pennec2018-sec6-4.PNG}}
 \vspace{1em}
 }
-Aqui o autor apenas formaliza o que foi dito anteriormente e nos mostra como a nova definição de flag pode ser criada com o uso do espaço afim \draftnote{Gabriel: Talvez haja uma maneira melhor de expandir isso}
+Aqui o autor apenas formaliza o que foi dito anteriormente e nos mostra como a nova definição de flag pode ser criada com o uso do espaço afim. \draftnote{Gabriel: Talvez haja uma maneira melhor de expandir isso}
+
 {
 \vspace{1em}
-\centering
 \frame{\includegraphics[width=1\linewidth]{figs/pennec2018-sec6-5.PNG}}
 \vspace{1em}
 }
+
 Neste trecho o autor apenas estabelece as diferenças da PCA no espaço euclidiano e a PCA proposta. No espaço euclidiano, quando queremos propor o encontro do mínimo, podemos utilizar a média, a variânça e outras técnicas para encontrar o mínimo de erro possível dos dados, porém em se tratando de variedades essa média é a média de Karcher ou Fréchet a depender do uso. Essas médias buscam o mínimo da distância geodésica ao quadrado, tornando a PCA proposta possível para um problema no espaço da variedade. Outra coisa que o autor aborda é a possibilidade de criar além da análise avançada que é feita no processo da alínea anterior, tembém há a criação das flags por meio "recuado", onde nela, é retirado a direção que otimiza o conjunto de pontos da variedade até chegar ao ponto ótimo pela média de Karcher.
 
 {
@@ -526,7 +617,7 @@ Neste trecho o autor apenas estabelece as diferenças da PCA no espaço euclidia
 
 Neste trecho o autor mostra alguns procedimentos de como fazer essa aproximação utilizando os resíduos como a distância dos pontos coletados na variedade e uma função $y$ que mapeia os pontos da variedade com base no conjunto de dados e mostra que a variança ao quadrado dos dados é a soma dos quadrados das distâncias geodésicas dos dados e nos mostra que isso pode nos fornecer respostas incorretas devido ao fato de que podem haver varianças parametrizadas por outras subvariedades, que provém da existência de múltiplos caminhos geodésicos, o fato de que utilizar subespaços de dimensão fixa podem tendenciar a PCA, por conta da falta de uma dimensão ela pode considderar pontos "errados" como sendo certos e o fato de que nem sempre a métrica riemmaniana senm sempre ser a melhor opção, isso porque podemos ficar presos a mínimos locais quando queremos ter uma visão global do problema.
 
-\section{Commented and Expanded Section 7: Discussion}
+\section{Commented and Expanded Section 7: Discussion}\label{sec:discussion}
 
 Nesta seção o autor resume todo o conteúdo que nos foi apresentado ao longo do texto e nos 
 
